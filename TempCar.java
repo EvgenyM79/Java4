@@ -38,7 +38,7 @@ public class TempCar {
         this.gosNum = gosNum;
     }
     public String toString()	{
-        return "name : " + model + "; age : " + gosNum;
+        return "model : " + model + "; gosNum : " + gosNum;
     }
 
 }
