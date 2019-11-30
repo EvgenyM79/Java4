@@ -20,9 +20,6 @@ public class TempCar {
         this.prkm = prkm;
         this.cena = cena;
         this.pBigAvto = pBigAvto;
-        /*if (this.pBigAvto > 0) {
-            this.pBigAvto = pBigAvto;
-        }*/
     }
 
     public Integer getModel() {
@@ -37,8 +34,21 @@ public class TempCar {
     public void setGosNum(String gosNum) {
         this.gosNum = gosNum;
     }
+    @Override
     public String toString()	{
         return "model : " + model + "; gosNum : " + gosNum;
+    }
+    public Integer getKm() {
+        return km;
+    }
+    public void setKm(Integer model) {
+        this.km = km;
+    }
+    public Integer getPBigAvto() {
+        return pBigAvto;
+    }
+    public void setPBigAvto(Integer pBigAvto) {
+        this.pBigAvto = pBigAvto;
     }
 
 }
