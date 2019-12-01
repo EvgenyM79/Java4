@@ -1,44 +1,57 @@
-import java.util.HashMap;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.util.ArrayList;
+import java.util.HashSet;
 
 public class Main {
 
-    public static int searchCh(String stroka, char findCh) {
-        StringBuilder poiskCh = new StringBuilder(stroka);
-        //System.out.println(poiskCh);
-            String regexp = String.valueOf(findCh);
-            Pattern pattern = Pattern.compile(regexp);
-            Matcher matcher = pattern.matcher(poiskCh);
-        int numFindCh = 0;
-        while (matcher.find()) {
-            //System.out.println("Найден символ \"" + findCh + "\" - позиция " + (matcher.end() - 1) );
-            numFindCh++;
-        }
-        findCh = (char) ((int) findCh - 32);
-        String regexp2 = String.valueOf(findCh);
-        Pattern pattern2 = Pattern.compile(regexp2);
-        Matcher matcher2 = pattern2.matcher(poiskCh);
-        while (matcher2.find()) {
-            //System.out.println("Найден символ \"" + findCh + "\" - позиция " + (matcher.end() - 1) );
-            numFindCh++;
-        }
-        //System.out.println("Символ \"" + findCh + "\" встретился " + numFindCh + " раз(а)." );
-        return numFindCh;
+    public static Integer generateInt(){
+        return (int) (Math.random()*5);
     }
-
     public static void main(String[] args) {
-        HashMap<Character, Integer> dict1= new HashMap<>(26);
-        String newStroka = "AAAsdfdsf,srwe14,7854,,dgd,afrfg6789421,afaSSsd234,1235zcpoyPPudnvode..,10";
-        //char newfindCh = 'a';
-        for (int i = (int) 'a'; i <= (int) 'z' ; i++) {
-            dict1.put((char) i, searchCh(newStroka, (char) i));
+        ArrayList<ClassUser> listExample = new ArrayList<ClassUser>();
+        HashSet<ClassUser> list2 = new HashSet<ClassUser>();
+        String[] fam = new String[]{"Иванов", "Петров", "Сидоров", "Сорокин", "Свистунов"};
+        String[] name = new String[]{"Петр", "Иван", "Сергей", "Павел", "Юрий"};
+        int nName = 0, nFam = 0;
+
+        for (int i = 0; i < 25; i++) {
+            nName = generateInt();
+            nFam = generateInt();
+            ClassUser user1 = new ClassUser(name[nName], fam[nFam]);
+            listExample.add(user1);
+            //colExample.add(user1);
         }
-        //System.out.println((int) 'a');
-        //System.out.println((int) 'A');
-        //System.out.println((int) 'z');
-        //System.out.println((int) 'Z');
-        System.out.println(dict1);
-        //searchCh(newStroka, newfindCh);
+        int count = 0;
+        for (ClassUser user : listExample) {
+            System.out.println(count + " " + user.name + " " + user.fam);
+            count++;
+        }
+        System.out.println(" Число объектов = " + count);
+        boolean t =true;
+        while (t) {
+            t = false;
+            for (int i = 0; i < listExample.size(); i++) {
+                for (int j = i; j < listExample.size(); j++) {
+                    if (i != j && listExample.get(i).equals(listExample.get(j))) {
+                        listExample.remove(j);
+                        t = true;
+                    }
+                }
+            }
+        }
+        count = 0;
+        //listExample.removeIf(Objects::);
+        //Set<ClassUser> listExample2 = new HashSet<ClassUser>(listExample);
+        //List<ClassUser> listExample2 = listExample.stream().distinct().collect(Collectors.toCollection(LinkedList::new));
+        //listExample.stream().distinct().collect(Collectors.toList());
+
+        //listExample.clear();
+        //listExample.addAll(listExample2);
+        count = 0;
+        for (ClassUser user : listExample) {
+            System.out.println(count + " " + user.name + " " + user.fam);
+            count++;
+        }
+        System.out.println(" Число объектов = " + count);
+
     }
 }
