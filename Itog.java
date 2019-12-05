@@ -7,6 +7,8 @@ public class Itog {
     public String goodName;
     public int maxValue;
 
+
+
     public Itog(HashMap<String, Integer> m1, String name, int val) {
             System.out.println(name + " " + val);
             boolean f = true;
@@ -45,8 +47,9 @@ public class Itog {
                     f = false;
                 }
             }
-        }
+        System.out.println(goodName + " - " + maxValue);
     }
+}
 
 
 

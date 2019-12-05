@@ -12,17 +12,24 @@ public class Main {
     String goodname = getClass().getName();
 
     public static void main(String[] args) {
-        String goodName =  "";
+        String goodName1 =  "";
+        String name1 = "";
         //String goodname = getClass().getName();
-        int maxValue = 0;
-
+        int maxValue1 = 0;
+        int value =0;
         String[] name = new String[]{"Петр", "Иван", "Сергей", "Павел", "Юрий","Ваня", "Петр","Генадий", "Василий"};
-        HashMap<String, Integer> m1 = new HashMap();
+        HashMap m1 = new HashMap();
         for (int i = 0; i < 15; i ++){
-            new Itog(m1, name[generateInt()], generateInt());
+            name1 = name[generateInt()];
+            value = generateInt();
+            if (value > maxValue1){
+                maxValue1 = value;
+                goodName1 = name1;
+            }
+            new Itog(m1, name1, value);
         }
         System.out.println(m1);
-        System.out.println("Лучший результат у " + goodName + " " + maxValue);
+        System.out.println("Лучший результат у " + goodName1 + " " + maxValue1);
 
 	// write your code here
     }
